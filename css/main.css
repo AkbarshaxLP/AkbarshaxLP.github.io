@@ -318,3 +318,10 @@ nav.next-prev {
 		left: 450px;
 		}
 
+@media(max-width: 729px){
+	img { 
+		display:block;
+		width: 25%;
+		height: auto;
+	}
+}

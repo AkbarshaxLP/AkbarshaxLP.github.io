@@ -62,7 +62,11 @@ h6 {
 h1 {
 	font-size: 48px
 }
-
+@media (max-width: 991px) {
+	h1 {
+		font-size: 36px;
+	}
+}
 h2 {
 	font-size: 36px
 }
@@ -2034,11 +2038,28 @@ p {
 }
 .single-blog .blog-image {
 	position: relative;
+	display: flex;
+	width: fit-content;
+	margin: 0 auto; 
 }
 .single-blog .blog-image img {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	width: 100%
+}
+
+.single-blog .blog-image .dev-avatar {
+	width: 160px;
+	height: 160px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (max-width: 330px) {
+	.single-blog .blog-image .dev-avatar {
+		width: 130px;
+		height: 130px;
+	}
 }
 
 .single-blog .author img {
@@ -2053,8 +2074,8 @@ p {
 }
 
 .single-blog  .author {
-	width: 22%;
-	height: 22%;
+	width: 35px;
+	height: 35px;
 	border-radius: 50%;
 	padding: 2px;
 	background-color: #EEF3FE;
@@ -2065,7 +2086,7 @@ p {
 	align-items: center;
 	justify-content: center;
 	position: absolute;
-	left: 5px;
+	left: 0;
 	bottom: 10px;
 }
 
@@ -2212,6 +2233,12 @@ p.form-message.error.form-message.error {
 	right: 0;
 	width: 45%;
 	height: 100%
+}
+
+@media (max-width: 991px) {
+	.contact-image {
+		display: none !important;
+	}
 }
 
 @media only screen and (min-width:768px) and (max-width:991px) {
@@ -2644,7 +2671,10 @@ transition:background 0s linear 0.4s, border-top-color 0.15s linear, border-righ
 	border-radius: 50% !important;
 	overflow: hidden;
 	object-fit: cover;
+	box-shadow: 2px 2px 8px;
 }
+
+
 
 
 /*modal*/
@@ -2686,7 +2716,7 @@ transition:background 0s linear 0.4s, border-top-color 0.15s linear, border-righ
   opacity: 1;
   visibility: visible;
   background-color: rgba(0,0,0,.2);
-  z-index: 9;
+  z-index: 9999999;
 }
 
 
@@ -2901,4 +2931,9 @@ transition:background 0s linear 0.4s, border-top-color 0.15s linear, border-righ
 }
 .pt-190 {
 	padding-top: 190px;
+}
+.circle-img {
+	padding-top: 70px;
+	text-align: center;
+	padding-bottom: 150px;
 }

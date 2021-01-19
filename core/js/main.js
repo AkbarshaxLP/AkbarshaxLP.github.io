@@ -93,24 +93,26 @@ $(function() {
     shuffleArray(a);
 
     for(let i = 0; i < 5; i++) {
-        $('#devs .col-lg-4').eq(i+1).css('order', a[i]);
+        $('#devs .col-md-4').eq(i+1).css('order', a[i]);
     }
     
     $(document).ready(function(){
 
       var owl = $(".owl-carousel").owlCarousel({
-        loop:true,
-        margin:20,
-        nav:false,
+        loop: false,
+        autoplayTimeout: 3000,
+        margin: 20,
+        nav: false,
+        autoplay: true,
         responsive:{
             0:{
-                items:1
+                items: 2
             },
             600:{
-                items:3
+                items: 3
             },
             1000:{
-                items:4
+                items: 5
             }
         }
       });
@@ -125,21 +127,6 @@ $(function() {
 });
 
 
-var modal = document.getElementById('myModal');
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementsByClassName('myImg');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-
-$('.myImg').click(function() {
-    console.log($('.myImg').index(this))
-
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    modalImg.alt = this.alt;
-    captionText.innerHTML = this.alt;
-})
 
 
 // Get the <span> element that closes the modal

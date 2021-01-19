@@ -24,9 +24,9 @@
 <link rel="stylesheet" href="./core/css/style.css">
 
 <link rel="stylesheet" href="./core/owlcarousel/assets/owl.carousel.min.css">
-<!-- <link rel="stylesheet" type="text/css" href="chrome-extension://onbkopaoemachfglhlpomhbpofepfpom/styles.css"></head> -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 <body>
-
+<div id="app">
    <header class="header-area">
       <div class="navbar-area">
          <div class="container">
@@ -104,7 +104,7 @@
                      <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s" > Теперь для того чтобы реализовать свою идею Вам необходимо техническая команда для разработки МВП.</p>
                      <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s" > − Мы можем проконсультировать бесплатно</p>
                      <p class="text wow fadeInUp mt-2" data-wow-duration="1.3s" data-wow-delay="0.8s" > − Мы можем реализовать Вам МВП</p>
-                     <a href="#" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.2s" style="visibility: visible; animation-duration: 1.3s; animation-delay: 1.2s; animation-name: fadeInUp;" id="contact_modal">Связаться с нами</a>
+                     <a @click="show_modal = true" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.2s" style="color: #fff;visibility: visible; animation-duration: 1.3s; animation-delay: 1.2s; animation-name: fadeInUp;" >Связаться с нами</a>
                   </div>
                </div>
             </div>
@@ -130,7 +130,7 @@
          </div>
          <div class="row">
             <div class="col-lg-12">
-               <div class="brand-wrapper d-flex flex-wrap justify-content-center">
+               <div class="brand-wrapper d-flex flex-wrap justify-content-center owl-carousel">
                   <div class="single-brand wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.2s; animation-name: fadeIn;">
                      <img src="./core/img/logos/unicon.png" alt="unicon">
                   </div>
@@ -496,31 +496,36 @@
                 <!--   <p class="text">Lorem ipsum dolor sitrg amet, consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna iquyam erat, sed diam voluptua.</p> -->
                </div>
                <div class="contact-form wow fadeInUpBig" data-wow-duration="2s" data-wow-delay="0.6s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.6s; animation-name: fadeInUpBig;">
-                  <form id="contact-form" action="assets/contact.php" style="padding-right: 0;" method="post">
+                  <div  style="padding-right: 0;">
                      <div class="row">
-                        <div class="col-md-6">
-                           <div class="single-form">
-                              <input type="text" name="name" placeholder="Имя">
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="single-form">
-                              <input type="email" name="email" placeholder="Email">
-                           </div>
-                        </div>
-                        <div class="col-md-12">
-                           <div class="single-form">
-                              <textarea name="massage" placeholder="Сообщение"></textarea>
-                           </div>
-                        </div>
-                        <p class="form-message"></p>
-                        <div class="col-md-12">
-                           <div class="single-form">
-                              <button class="main-btn">Отправить</button>
-                           </div>
-                        </div>
-                     </div>
-                  </form>
+                       <div class="col-md-12">
+                          <div class="single-form">
+                             <input type="text" name="name" v-model="form.name" placeholder="ФИО">
+                          </div>
+                       </div>
+                       <div class="col-md-6">
+                          <div class="single-form">
+                             <input type="number" name="phone" v-model="form.phone_number" placeholder="Телефон">
+                          </div>
+                       </div>
+                       <div class="col-md-6">
+                          <div class="single-form">
+                             <input type="email" name="email" v-model="form.email" placeholder="Email">
+                          </div>
+                       </div>
+                       <div class="col-md-12">
+                          <div class="single-form">
+                             <textarea name="massage" v-model="form.message" placeholder="Сообщение"></textarea>
+                          </div>
+                       </div>
+                       <p class="form-message"></p>
+                       <div class="col-md-12">
+                          <div class="single-form">
+                             <button class="main-btn" @click="submit()">Отправить</button>
+                          </div>
+                       </div>
+                    </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -598,11 +603,11 @@
    </section>
    <a href="#" class="back-to-top" style="display: none;"><i class="fa fa-chevron-up"></i></a>
 
-		<div class="modal-overlay">
-		  <div class="modal">
+		<div class="modal-overlay" :class="show_modal ? 'active' : ''">
+		  <div class="modal" :class="show_modal ? 'active' : ''">
 		    <header style="position: relative;">
-		    	<h4>Contact us</h4>
-			    <a class="close-modal">
+		    	<h4>Связаться с нами</h4>
+			    <a @click="show_modal = false" class="close-modal">
 			      <svg viewBox="0 0 20 20">
 			        <path fill="#000000" d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
 			      </svg>
@@ -611,37 +616,47 @@
 
 		    <div class="modal-content">
 		      <div class="contact-form" style="visibility: visible; animation-duration: 2s; animation-delay: 0.6s; animation-name: fadeInUpBig;padding: 0;">
-              <form id="contact-form" action="assets/contact.php" method="post">
+         
                  <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                        <div class="single-form">
-                          <input type="text" name="name" placeholder="Name">
+                          <input type="text" name="name" v-model="form.name" placeholder="ФИО">
                        </div>
                     </div>
                     <div class="col-md-6">
                        <div class="single-form">
-                          <input type="email" name="email" placeholder="Email">
+                          <input type="number" name="phone" v-model="form.phone_number" placeholder="Телефон">
+                       </div>
+                    </div>
+                    <div class="col-md-6">
+                       <div class="single-form">
+                          <input type="email" name="email" v-model="form.email" placeholder="Email">
                        </div>
                     </div>
                     <div class="col-md-12">
                        <div class="single-form">
-                          <textarea name="massage" placeholder="Message"></textarea>
+                          <textarea name="massage" v-model="form.message" placeholder="Сообщение"></textarea>
                        </div>
                     </div>
                     <p class="form-message"></p>
                     <div class="col-md-12">
                        <div class="single-form">
-                          <button class="main-btn">Submit</button>
+                          <button class="main-btn" @click="submit()">Отправить</button>
                        </div>
                     </div>
                  </div>
-              </form>
+             
            </div>
 		    </div><!-- content -->
 		    
 		  </div><!-- modal -->
 		</div><!-- overlay -->
+   
+   </div>
 
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
    <script src="./core/js/jquery-1.12.4.min.js"></script>
    <script src="./core/js/modernizr-3.7.1.min.js"></script>
@@ -653,6 +668,59 @@
    <script src="./core/js/wow.min.js"></script>
    <script src="./core/owlcarousel/owl.carousel.min.js"></script>
    <script src="./core/js/main.js"></script>
-   <div class="mallbery-caa" style="z-index: 2147483647 !important; text-transform: none !important; position: fixed;"></div>
+   <script type="text/javascript">
+      var app = new Vue({
+       el: "#app",
+       data() {
+         return {
+           api_url: '',
+           show_modal: false,
+           form: {
+            name: null,
+            email: null,
+            phone_number: null,
+            message: null
+           }
+         };
+       },
+       methods: {
+         submit () {
+            if (this.form.name &&
+                this.form.email &&
+                this.form.phone_number &&
+                this.form.message  
+               ) {
+
+               axios.post(`${this.api_url}/api/v1/send`, this.form)
+               .then((response) => {
+                  this.$notify({
+                   title: 'Отправлено',
+                   message: 'Мы получили ваше сообщение',
+                   type: 'success'
+                 });
+               })
+               .catch(error => {
+                  this.$notify({
+                   title: 'Ошибка',
+                   message: 'Не удалось отправить сообщение',
+                   type: 'error'
+                 });
+               })
+               .finally(() => {
+                  this.show_modal = false;
+               })
+            }
+            else {
+               this.$notify({
+                title: 'Предупреждение',
+                message: 'Пожалуйста заполните все поля',
+                type: 'warning'
+              });
+            }
+
+         }
+       },
+     });
+   </script>
 </body>
 </html>

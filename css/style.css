@@ -639,13 +639,20 @@ body{
   position: absolute;
 }
 
+.select-menu a {
+  text-decoration: none;
+  text-align: center;
+}
+
 .select-menu .item {
   min-width: 200px;
-  background: rgba(0,0,0,0.4);
+  background: #2AA1DD;
+  opacity: 0.9;
   padding: 5px 10px;
   height: 40px;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-top: 10px;
   border-radius: 6px;
   color: #fff;

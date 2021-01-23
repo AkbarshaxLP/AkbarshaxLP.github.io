@@ -18,18 +18,18 @@
 			<table cellpadding="0">
 				<tr class="header">
 					<td>ФИО</td>
-					<td>Сатурация</td>
-					<td>Вес</td>
-					<td>Рост</td>
-					<td>Готовность</td>
+					<td>Тип минифутболиста</td>
+					<td>Голы за 5 игр</td>
+					<td>Голы за сезон</td>
+					<td>Кол-во ассистов</td>
 				</thr>
 
 				<tr v-for="item in users">
 					<td>{{ item.name }}</td>
-					<td class="text-center">{{ item.sat }}%</td>
-					<td class="text-center">{{ item.weight }} кг.</td>
-					<td class="text-center">{{ item.height }} см.</td>
-					<td class="text-center">{{ item.status }}%</td>
+					<td class="text-center">{{ item.sat }}</td>
+					<td class="text-center">{{ item.weight }}</td>
+					<td class="text-center">{{ item.height }}</td>
+					<td class="text-center">{{ item.status }}</td>
 				</thr>
 
 			</table>
@@ -42,10 +42,15 @@
 		    <div class="close" onclick="hideModal()">&times;</div>
 		    <h3>Login</h3>
 		    <input type="text" v-model="name" placeholder="ФИО">
-		    <input type="number" v-model="sat" placeholder="Сатурация">
-		    <input type="number" v-model="weight" placeholder="Вес">
-		    <input type="number" v-model="height" placeholder="Рост">
-		    <input type="number" max="100" v-model="status" placeholder="Готовность">
+		    <select v-model="sat">
+		    	<option selected="">Тип футболиста</option>
+		    	<option :value="item.name" v-for="item in dict">
+		    		{{ item.name }}
+		    	</option>
+		    </select>
+		    <input type="number" v-model="weight" placeholder="Голы за 5 игр">
+		    <input type="number" v-model="height" placeholder="Голы за сезон">
+		    <input type="number" max="100" v-model="status" placeholder="Кол-во ассистов">
 		    <button @click="add()">Login </button>
 		  </div>
 		</div>
@@ -71,24 +76,23 @@
 	      	a: null,
 	        authstatus: false,
         	name: null,
-        	sat: null,
+        	sat: 'Тип футболиста',
         	weight: null,
         	height: null,
         	status: null,
-	        users: [{
-	        	name: 'Бобокулов Акбар',
-	        	sat: 100,
-	        	weight: 78,
-	        	height: 184,
-	        	status: 98,
-	        },
-	        {
-	        	name: 'Мухаммадиев Мансур',
-	        	sat: 100,
-	        	weight: 84,
-	        	height: 179,
-	        	status: 96,
-	        }]
+        	dict: [{
+        		id: 1,
+        		name: 'Нападающий'
+        	},
+        	{
+        		id: 2,
+        		name: 'Защитник'
+        	},
+        	{
+        		id: 3,
+        		name: 'Вратарь'
+        	}],
+	        users: []
 	      };
 	    },
 	    methods: {
@@ -140,7 +144,7 @@ body {
 }
 
 #app {
-	background: #664A93;
+	background: #50C878;
 	min-height: 100vh;
 	color: #fff;
 	font-size: 12px;
@@ -225,7 +229,8 @@ body {
   text-align: center;
   margin-bottom: 10px;
 }
-.form input {
+.form input, .form select {
+	background-color: #fff;
   display: block;
   width: 100%;
   margin-bottom: 15px;

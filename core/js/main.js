@@ -89,11 +89,14 @@ $(function() {
         }
     }
 
-    let a = [1,2,3,4,5];
+    let a = [1,2,3,4,5,6,7];
+
+    // let len = $('#devs .col-md-4').length; 
+
     shuffleArray(a);
 
-    for(let i = 0; i < 5; i++) {
-        $('#devs .col-md-4').eq(i+1).css('order', a[i]);
+    for(let i = 0; i < 7; i++) {
+        $('#devs .col-md-4').eq(i).css('order', a[i]);
     }
     
     $(document).ready(function(){

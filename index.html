@@ -743,7 +743,7 @@
                 this.form.message  
                ) {
 
-               axios.post(`${this.api_url}/api/v1/send/`, this.form)
+               axios.post(`${this.api_url}/api/v1/send`, this.form)
                .then((response) => {
                   this.$notify({
                    title: 'Отправлено',

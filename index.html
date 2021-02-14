@@ -725,7 +725,7 @@
        el: "#app",
        data() {
          return {
-           api_url: 'https://teamops.herokuapp.com/api/v1/send',
+           api_url: 'https://teamops.herokuapp.com',
            show_modal: false,
            form: {
             name: null,
@@ -743,7 +743,7 @@
                 this.form.message  
                ) {
 
-               axios.post(`${this.api_url}/api/v1/send`, this.form)
+               axios.post(`${this.api_url}/api/v1/send/`, this.form)
                .then((response) => {
                   this.$notify({
                    title: 'Отправлено',

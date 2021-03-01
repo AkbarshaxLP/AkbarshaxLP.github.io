@@ -102,8 +102,8 @@ $(function() {
     $(document).ready(function(){
 
       var owl = $(".owl-carousel").owlCarousel({
-        loop: false,
-        autoplayTimeout: 3000,
+        loop: true,
+        autoplayTimeout: 2500,
         margin: 20,
         nav: false,
         autoplay: true,

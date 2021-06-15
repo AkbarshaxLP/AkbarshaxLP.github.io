@@ -89,13 +89,13 @@ $(function() {
         }
     }
 
-    let a = [1,2,3,4,5,6,7];
+    let a = [1,2,3,4,5,6,7,8,9];
 
     // let len = $('#devs .col-md-4').length; 
 
     shuffleArray(a);
 
-    for(let i = 0; i < 7; i++) {
+    for(let i = 0; i < 9; i++) {
         $('#devs .col-md-4').eq(i).css('order', a[i]);
     }
     

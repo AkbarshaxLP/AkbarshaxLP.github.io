@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkdocs_test"]=self["webpackChunkdocs_test"]||[]).push([[661],{1661:function(t,n,u){u.r(n),u.d(n,{default:function(){return l}});var e=function(){var t=this,n=t._self._c;return n("div",[n("router-link",{attrs:{to:"/documents"}},[t._v("go to Documents")])],1)},s=[],o=u(1001),r={},c=(0,o.Z)(r,e,s,!1,null,null,null),l=c.exports}}]);
-//# sourceMappingURL=661.b0ae656a.js.map
